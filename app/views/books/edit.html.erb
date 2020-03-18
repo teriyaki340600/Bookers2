@@ -1,0 +1,36 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h1>Editing Book</h1>
+        <% if alert %>
+          <p class="alert alert-error"><%= alert %></p>
+        <% end %>
+  <!-- form_for部分 -->
+          <%= form_for(@book) do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
+            <div class="field row">
+              <label for="book_title">Title</label>
+              <div>
+                <%= f.text_field :title, class: "col-xs-12 book_title" %>
+              </div>
+            </div>
+            <div class="field row">
+              <label for="book_opinion">Opinion</label>
+              <div class>
+                <%= f.text_area :body, class: "col-xs-12 book_body" %>
+              </div>
+            </div>
+            <div class="action row">
+              <div>
+                <%= f.submit "Update Book", class: "btn btn-primary col-xs-12 book_title" %>
+              </div>
+            </div>
+          <% end %>
+          <%= link_to "Show", "/books/#{@book.id}" %>
+          |
+          <%= link_to "Back", "/books" %>
+      </div>
+    </div>
+  </div>
+</div>
